@@ -4,9 +4,10 @@ on:
   workflow_call:
     inputs:
       who-to-greet:
-      type: string
-      required: true
-      default: World
+        description: 'The person to greet'
+        type: string
+        required: true
+        default: World
     outputs:
       current-time:
         description: 'The time when greeting.'
@@ -19,8 +20,7 @@ jobs:
       current-time: ${{ steps.time.outputs.time }}
     steps:
       - name: Greet someone
-        run: echo "Hellow ${{ inputs.who-to-greet }}
-
+        run: echo "Hello ${{ inputs.who-to-greet }}"
       - name: Set time
         id: time
-        run: echo "time=$(date)" >> $GITHUB_OUTPUT    
+        run: echo "time=$(date)" >> $GITHUB_OUTPUT
